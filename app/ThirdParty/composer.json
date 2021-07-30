@@ -1,0 +1,6 @@
+{
+    "require": {
+        "denis303/codeigniter4-recaptcha": "dev-master",
+        "dompdf/dompdf": "^1.0"
+    }
+}
