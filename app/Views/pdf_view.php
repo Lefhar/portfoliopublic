@@ -117,6 +117,7 @@
 
     </div>
     <div class="col-lg-8">
+
 <span class="sociaux">
             <?php if (!empty($pic)) {
                 foreach ($pic as $obj) {

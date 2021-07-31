@@ -15,7 +15,7 @@
     <meta property="og:description" content="Passionné d’informatique depuis 2005, j’aime relever des défis techniques et résoudre les problèmes les plus complexes. J’ai commencé en autodidacte, principalement en procédural, et depuis 2 ans en POO. J’ai des compétences élevées en HTML, Javascript, PHP (procédural, PDO, POO) et MySQL. Je connais l’environnement serveur debian, ubuntu, centos. Je sais travailler sous Ubuntu, Debian, CentOS. Je sais travailler sous Ubuntu, Debian, CentOS. Afin de professionnaliser toutes mes compétences, j'ai suivi une formation à l’AFPA du 19 Octobre 2020 au 9 Juillet 2021." />
     <meta property="og:image" content="https://lefebvreharold.fr/assets/img/ms-icon-310x310.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="<?=base_url('assets/css/style.css?id=43');?>">
+    <link rel="stylesheet" href="<?=base_url('assets/css/style.css?id=44');?>">
     <link rel="apple-touch-icon" sizes="57x57" href="<?=base_url('assets/img/apple-icon-57x57.png');?>"/>
     <link rel="apple-touch-icon" sizes="60x60" href="<?=base_url('assets/img/apple-icon-60x60.png');?>"/>
     <link rel="apple-touch-icon" sizes="72x72" href="<?=base_url('assets/img/apple-icon-72x72.png');?>"/>

@@ -103,7 +103,9 @@
 
                     </div>
                     <div class="col-lg-8 padancre">
+                        <a href="<?=base_url('pdfController/download');?>" target="_blank" class="btn btn-primary downloadcv" ><i class="fas fa-file-pdf text-danger"></i> Télécharger le CV</a>
                 <span class="sociaux">
+
                      <?php if (!empty($pic)) {
                          foreach ($pic as $obj) {
                              if ($obj->emplacement == "sociaux") { ?><?= $obj->content; ?><?php }
@@ -167,7 +169,6 @@
                     } catch (Exception $e) {
                     }
                     ?>
-                    <!--                    <div class="g-recaptcha" data-sitekey="6Lfj_WEaAAAAACD8k3yo9U_PDtm254aftuWQPHrT"></div>-->
                     <button type="submit" class="btn btn-info">Envoyer</button>
                 </form>
             </div>

@@ -23,7 +23,7 @@ class editprojetModel extends Model
             $builder->set($data);
             $builder->where('id', $id);
             if($builder->update()){
-                $aView['error'] = '<div class="alert alert-success" role="alert">Modification effectué</div>';
+                $aView['error'] = true;
             }else{
                 $aView['error'] = '<div class="alert alert-danger" role="alert">Aucune modification effectué</div>';
             }

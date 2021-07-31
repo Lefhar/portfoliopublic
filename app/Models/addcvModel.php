@@ -44,8 +44,12 @@ class addcvModel extends Model
         if(!empty($request->getPost('emplacement'))&&!empty($request->getPost('content'))){
             $builder = $db->table('image');
             $builder->set($data);
-            $builder->insert();
-            $aView['error'] = '<div class="alert alert-success" role="alert">Ajout effectué</div>';
+
+            if($builder->insert()){
+                $aView['error'] = true;
+            }else{
+                $aView['error'] = '<div class="alert alert-danger" role="alert">Erreur d\'ajout</div>';
+            }
         }
 
         return $aView;

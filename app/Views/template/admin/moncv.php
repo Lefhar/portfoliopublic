@@ -31,6 +31,7 @@
                             <?php if (!empty($pic)) { foreach ($pic as $obj) { if($obj->emplacement == "profil"){
                                 $obj->content = str_replace('assets',base_url('/assets'),$obj->content);?><?= $obj->content; ?>
                                 <a href="<?= base_url('/admin/editpicture/'.$obj->id); ?>"><i class="fas fa-edit"></i></a>
+                                <a href="<?= base_url('/admin/deleteblocpicture/' . $obj->id); ?>"><i class="fas fa-trash text-danger"></i></a>
                             <?php }?>
 
                             <?php
@@ -41,7 +42,9 @@
                             if ($obj->emplacement == "left") {
                                 $obj->content = str_replace('assets',base_url('/assets'),$obj->content);
                                 ?>
-                                <h3><?= $obj->title; ?> <a href="<?= base_url('/admin/editcv/'.$obj->id); ?>"><i class="fas fa-edit"></i></a></h3>
+                                <h3><?= $obj->title; ?> <a href="<?= base_url('/admin/editcv/'.$obj->id); ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="<?= base_url('/admin/deletebloccv/' . $obj->id); ?>"><i class="fas fa-trash text-danger"></i></a>
+                                </h3>
                                 <hr class="hrcv">
                                 <?= $obj->content; ?>
                                 <?php
@@ -53,6 +56,7 @@
                             <?php if (!empty($pic)) { foreach ($pic as $obj) { if($obj->emplacement == "sociaux"){
                                 $obj->content = str_replace('assets','../../assets',$obj->content);?><?= $obj->content; ?>
                                 <a href="<?= base_url('/admin/editpicture/'.$obj->id); ?>"><i class="fas fa-edit"></i></a>
+                                <a href="<?= base_url('/admin/deleteblocpicture/' . $obj->id); ?>"><i class="fas fa-trash text-danger"></i></a>
                             <?php }?>
 
                                 <?php
@@ -62,7 +66,9 @@
                         <?php foreach ($row as $obj) {
                             if ($obj->emplacement == "right") {
                                 ?>
-                                <h3><?= $obj->title; ?> <a href="<?= base_url('/admin/editcv/'.$obj->id); ?>"><i class="fas fa-edit"></i></a></h3>
+                                <h3><?= $obj->title; ?> <a href="<?= base_url('/admin/editcv/'.$obj->id); ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="<?= base_url('/admin/deletebloccv/' . $obj->id); ?>"><i class="fas fa-trash text-danger"></i></a>
+                                </h3>
                                 <hr class="hrcv">
                                 <?= $obj->content; ?>
                                 <?php

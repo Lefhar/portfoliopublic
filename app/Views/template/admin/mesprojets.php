@@ -33,7 +33,8 @@
                 <div class="card-body">
                 <h5 class="card-title"><a href="https://jarditou.lefebvreharold.fr/"
                                           target="blank"><?= $obj->title; ?></a> <a
-                            href="<?= base_url('/admin/editprojet/' . $obj->id); ?>"><i class="fas fa-edit"></i></a></h5>
+                            href="<?= base_url('/admin/editprojet/' . $obj->id); ?>"><i class="fas fa-edit"></i></a> <a
+                            href="<?= base_url('/admin/deleteprojet/' . $obj->id); ?>"><i class="fas fa-trash text-danger"></i></a></h5>
                 <p class="card-text">
                     <?= $obj->contenu; ?>
                 </p>

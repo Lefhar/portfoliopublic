@@ -27,8 +27,12 @@ class editcvModel extends Model
             $builder = $db->table('contenu_cv');
             $builder->set($data);
             $builder->where('id', $id);
-            $builder->update();
-            $aView['error'] = '<div class="alert alert-success" role="alert">Modification effectué</div>';
+
+            if($builder->update()){
+                $aView['error'] = true;
+            }else{
+                $aView['error'] = '<div class="alert alert-danger" role="alert">Erreur de modification</div>';
+            }
         }
         $aView['row']= $query->getRowArray();
         $aView['dump']= $request->getPost();

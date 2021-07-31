@@ -48,12 +48,13 @@ class Admin extends Controller
         if (!empty($request->getPost()) && empty($aView['error'])) {
             return redirect()->to('admin');
         }
-       //var_dump($aView);
+        //var_dump($aView);
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/ajout_entreprise',$aView);
+        echo view('template/admin/ajout_entreprise', $aView);
         echo view('template/admin/footer');
     }
+
     public function ajout_serversmtp()
     {
         $validation = Services::validation();
@@ -74,14 +75,15 @@ class Admin extends Controller
         if (!empty($request->getPost()) && empty($aView['error'])) {
             return redirect()->to('admin');
         }
-       //var_dump($aView);
+        //var_dump($aView);
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/ajout_serversmtp',$aView);
+        echo view('template/admin/ajout_serversmtp', $aView);
         echo view('template/admin/footer');
     }
 
-    public function mesprojets(){
+    public function mesprojets()
+    {
         $projetsModel = model('App\Models\projetsModel');
         $aView = $projetsModel->index();
         $userModel = model('App\Models\userModel');
@@ -92,13 +94,13 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/mesprojets',$aView);
+        echo view('template/admin/mesprojets', $aView);
         echo view('template/admin/footer');
-//        $dompdf = new PdfController();
-//        $dompdf->htmlToPDFsave();
+
     }
 
-    public  function addprojet(){
+    public function addprojet()
+    {
         $userModel = model('App\Models\userModel');
         $addprojetModel = model('App\Models\addprojetModel');
         $request = service('request');
@@ -109,8 +111,8 @@ class Admin extends Controller
         if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
             return redirect()->to('users/connexion');
         }
-     //   $validation->setRule('name', 'name', 'required|max_length[20]', array("required" => "le champs titre est obligatoire.", "max_length" => "20 caractéres maximum pour le champ name"));
-         $validation->setRule('title', 'title', 'required|max_length[30]', array("required" => "le champs titre est obligatoire.", "max_length" => "30 caractéres maximum pour le titre"));
+
+        $validation->setRule('title', 'title', 'required|max_length[30]', array("required" => "le champs titre est obligatoire.", "max_length" => "30 caractéres maximum pour le titre"));
         $validation->setRule('contenu', 'contenu', 'required', array("required" => "le champs contenu est obligatoire."));
         $data = $request->getPost();
 
@@ -120,11 +122,16 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/addprojet',$aView);
+        echo view('template/admin/addprojet', $aView);
         echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/mesprojets');
+        }
     }
 
-    public  function editprojet(){
+
+    public function editprojet()
+    {
         $userModel = model('App\Models\userModel');
         $editprojetModel = model('App\Models\editprojetModel');
         $request = service('request');
@@ -135,8 +142,7 @@ class Admin extends Controller
         if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
             return redirect()->to('users/connexion');
         }
-     //   $validation->setRule('name', 'name', 'required|max_length[20]', array("required" => "le champs titre est obligatoire.", "max_length" => "20 caractéres maximum pour le champ name"));
-         $validation->setRule('title', 'title', 'required|max_length[30]', array("required" => "le champs titre est obligatoire.", "max_length" => "30 caractéres maximum pour le titre"));
+        $validation->setRule('title', 'title', 'required|max_length[30]', array("required" => "le champs titre est obligatoire.", "max_length" => "30 caractéres maximum pour le titre"));
         $validation->setRule('contenu', 'contenu', 'required', array("required" => "le champs contenu est obligatoire."));
         $data = $request->getPost();
 
@@ -146,10 +152,34 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/editprojet',$aView);
+        echo view('template/admin/editprojet', $aView);
         echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/mesprojets');
+        }
     }
-    public function moncv(){
+
+    public function deleteprojet()
+    {
+        $userModel = model('App\Models\userModel');
+        $deleteProjet = model('App\Models\deleteprojetModel');
+        $request = service('request');
+        $aViewHeader['user'] = $userModel->getUser();
+        $aView = $deleteProjet->index($request->uri->getSegment(3));
+        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
+            return redirect()->to('users/connexion');
+        }
+        echo view('template/admin/header', $aViewHeader);
+        echo view('template/admin/sidebar');
+        echo view('template/admin/confirmdelete', $aView);
+        echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
+    }
+
+    public function moncv()
+    {
         $homeModel = model('App\Models\homeModel');
         $userModel = model('App\Models\userModel');
         $aView = $homeModel->monCv();
@@ -159,12 +189,13 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/moncv',$aView);
+        echo view('template/admin/moncv', $aView);
         echo view('template/admin/footer');
-//        $dompdf = new PdfController();
-//        $dompdf->htmlToPDFsave();
+
     }
-    public  function editcv(){
+
+    public function editcv()
+    {
         $userModel = model('App\Models\userModel');
         $editModel = model('App\Models\editcvModel');
         $request = service('request');
@@ -176,7 +207,7 @@ class Admin extends Controller
             return redirect()->to('users/connexion');
         }
         $validation->setRule('title', 'title', 'required|max_length[52]', array("required" => "le champs titre est obligatoire.", "max_length" => "52 caractéres maximum pour le titre"));
-       $validation->setRule('content', 'title', 'required', array("required" => "le champs contenu est obligatoire."));
+        $validation->setRule('content', 'title', 'required', array("required" => "le champs contenu est obligatoire."));
         $data = $request->getPost();
 
         if ($validation->run($data) != TRUE && $request->getPost()) {
@@ -185,12 +216,33 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/editcv',$aView);
+        echo view('template/admin/editcv', $aView);
         echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/mesprojets');
+        }
 
     }
-
-    public  function editpicture(){
+    public function deletebloccv()
+    {
+        $userModel = model('App\Models\userModel');
+        $deletebloccvModel = model('App\Models\deletebloccvModel');
+        $request = service('request');
+        $aViewHeader['user'] = $userModel->getUser();
+        $aView = $deletebloccvModel->index($request->uri->getSegment(3));
+        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
+            return redirect()->to('users/connexion');
+        }
+        echo view('template/admin/header', $aViewHeader);
+        echo view('template/admin/sidebar');
+        echo view('template/admin/confirmdelete', $aView);
+        echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
+    }
+    public function editpicture()
+    {
         $userModel = model('App\Models\userModel');
         $editModel = model('App\Models\editcvModel');
         $request = service('request');
@@ -211,12 +263,33 @@ class Admin extends Controller
 
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/editpicture',$aView);
+        echo view('template/admin/editpicture', $aView);
         echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
 
     }
-
-    public  function addcv(){
+    public function deleteblocpicture()
+    {
+        $userModel = model('App\Models\userModel');
+        $deletebloccvModel = model('App\Models\deletebloccvModel');
+        $request = service('request');
+        $aViewHeader['user'] = $userModel->getUser();
+        $aView = $deletebloccvModel->picture($request->uri->getSegment(3));
+        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
+            return redirect()->to('users/connexion');
+        }
+        echo view('template/admin/header', $aViewHeader);
+        echo view('template/admin/sidebar');
+        echo view('template/admin/confirmdelete', $aView);
+        echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
+    }
+    public function addcv()
+    {
         $userModel = model('App\Models\userModel');
         $addcvModel = model('App\Models\addcvModel');
         $request = service('request');
@@ -237,11 +310,15 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/addcv',$aView);
+        echo view('template/admin/addcv', $aView);
         echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
     }
 
-    public  function addpicture(){
+    public function addpicture()
+    {
         $userModel = model('App\Models\userModel');
         $addcvModel = model('App\Models\addcvModel');
         $request = service('request');
@@ -261,7 +338,10 @@ class Admin extends Controller
         }
         echo view('template/admin/header', $aViewHeader);
         echo view('template/admin/sidebar');
-        echo view('template/admin/addpicture',$aView);
+        echo view('template/admin/addpicture', $aView);
         echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
     }
 }

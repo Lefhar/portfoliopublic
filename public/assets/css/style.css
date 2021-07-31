@@ -324,3 +324,6 @@ textarea{
 div[id^="projet"] {
     opacity: 0;
 }
+.downloadcv{
+    margin-bottom: 6px;
+}
