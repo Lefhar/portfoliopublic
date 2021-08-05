@@ -23,6 +23,7 @@ class editcvModel extends Model
         $data['content']= str_replace('<p><strong>','<strong>',$data['content']);
         $data['content']= str_replace('</strong></p>','</strong>',$data['content']);
         $data['content'] = str_replace('../../assets','assets',$data['content']);
+        $data['date'] =date('Y-m-d H:i:s');
         if(!empty($request->getPost('title'))&&!empty($request->getPost('content'))){
             $builder = $db->table('contenu_cv');
             $builder->set($data);
@@ -52,7 +53,7 @@ class editcvModel extends Model
         $data['content']= str_replace('<p>','',$data['content']);
         $data['content']= str_replace('</p>','',$data['content']);
         $data['content'] = str_replace('../../assets','assets',$data['content']);
-
+        $data['date'] =date('Y-m-d H:i:s');
         if(!empty($request->getPost('emplacement'))&&!empty($request->getPost('content'))){
             $builder = $db->table('image');
             $builder->set($data);

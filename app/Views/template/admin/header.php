@@ -16,6 +16,8 @@
     <script>tinymce.init({
             language: 'fr_FR',
             selector: 'textarea#local-upload',
+            browser_spellcheck: true,
+            contextmenu: false,
             plugins: 'visualblocks,codesample,emoticons,help,code,image,link,lists',
             toolbar: "code| undo redo | styleselect | bold italic | link image | numlist bullist",
             image_class_list: [

@@ -96,7 +96,7 @@
             <?php if (!empty($pic)) {
                 foreach ($pic as $obj) {
                     if ($obj->emplacement == "profil") {
-                        $obj->content = str_replace('assets', base_url('assets'), $obj->content); ?><?= $obj->content; ?>
+                        $obj->content = str_replace('assets', base_url('https://lefebvreharold.fr/assets'), $obj->content); ?><?= $obj->content; ?>
 
                     <?php
 

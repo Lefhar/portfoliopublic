@@ -11,27 +11,27 @@
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:type" content="profile" />
     <meta property="og:title" content="Developpeur web et web mobile" />
-    <meta property="og:url" content="https://lefebvreharold.fr" />
+    <meta property="og:url" content="<?=site_url();?>" />
     <meta property="og:description" content="Passionné d’informatique depuis 2005, j’aime relever des défis techniques et résoudre les problèmes les plus complexes. J’ai commencé en autodidacte, principalement en procédural, et depuis 2 ans en POO. J’ai des compétences élevées en HTML, Javascript, PHP (procédural, PDO, POO) et MySQL. Je connais l’environnement serveur debian, ubuntu, centos. Je sais travailler sous Ubuntu, Debian, CentOS. Je sais travailler sous Ubuntu, Debian, CentOS. Afin de professionnaliser toutes mes compétences, j'ai suivi une formation à l’AFPA du 19 Octobre 2020 au 9 Juillet 2021." />
-    <meta property="og:image" content="https://lefebvreharold.fr/assets/img/ms-icon-310x310.png" />
+    <meta property="og:image" content="<?=site_url('assets/img/ms-icon-310x310.png');?>" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="<?=base_url('assets/css/style.css?id=44');?>">
-    <link rel="apple-touch-icon" sizes="57x57" href="<?=base_url('assets/img/apple-icon-57x57.png');?>"/>
-    <link rel="apple-touch-icon" sizes="60x60" href="<?=base_url('assets/img/apple-icon-60x60.png');?>"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="<?=base_url('assets/img/apple-icon-72x72.png');?>"/>
-    <link rel="apple-touch-icon" sizes="76x76" href="<?=base_url('assets/img/apple-icon-76x76.png');?>"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('assets/img/apple-icon-114x114.png');?>"/>
-    <link rel="apple-touch-icon" sizes="120x120" href="<?=base_url('assets/img/apple-icon-120x120.png');?>"/>
-    <link rel="apple-touch-icon" sizes="144x144" href="<?=base_url('assets/img/apple-icon-144x144.png');?>"/>
-    <link rel="apple-touch-icon" sizes="152x152" href="<?=base_url('assets/img/apple-icon-152x152.png');?>"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url('assets/img/apple-icon-180x180.png');?>"/>
-    <link rel="icon" type="image/png" sizes="192x192"  href="<?=base_url('assets/img/android-icon-192x192.png');?>"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url('assets/img/favicon-32x32.png');?>"/>
-    <link rel="icon" type="image/png" sizes="96x96" href="<?=base_url('assets/img/favicon-96x96.png');?>"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url('assets/img/favicon-16x16.png');?>"/>
-    <link rel="manifest" href="<?=base_url('manifest.json');?>"/>
+    <link rel="stylesheet" href="<?=site_url('assets/css/style.css?id=44');?>">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?=site_url('assets/img/apple-icon-57x57.png');?>"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="<?=site_url('assets/img/apple-icon-60x60.png');?>"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="<?=site_url('assets/img/apple-icon-72x72.png');?>"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="<?=site_url('assets/img/apple-icon-76x76.png');?>"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="<?=site_url('assets/img/apple-icon-114x114.png');?>"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="<?=site_url('assets/img/apple-icon-120x120.png');?>"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="<?=site_url('assets/img/apple-icon-144x144.png');?>"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="<?=site_url('assets/img/apple-icon-152x152.png');?>"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=site_url('assets/img/apple-icon-180x180.png');?>"/>
+    <link rel="icon" type="image/png" sizes="192x192"  href="<?=site_url('assets/img/android-icon-192x192.png');?>"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="<?=site_url('assets/img/favicon-32x32.png');?>"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="<?=site_url('assets/img/favicon-96x96.png');?>"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=site_url('assets/img/favicon-16x16.png');?>"/>
+    <link rel="manifest" href="<?=site_url('manifest.json');?>"/>
     <meta name="msapplication-TileColor" content="#ffffff"/>
-    <meta name="msapplication-TileImage" content="<?=base_url('assets/img/ms-icon-144x144.png');?>"/>
+    <meta name="msapplication-TileImage" content="<?=site_url('assets/img/ms-icon-144x144.png');?>"/>
     <meta name="theme-color" content="#ffffff"/>
 </head>
 <body>

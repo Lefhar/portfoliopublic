@@ -2,7 +2,7 @@
 
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('admin');?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -12,7 +12,7 @@
         <hr class="sidebar-divider my-0">
 
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?=base_url('admin');?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -33,6 +33,8 @@
                     <h6 class="collapse-header">Categorie:</h6>
                     <a class="collapse-item" href="<?=base_url('admin/moncv');?>">Mon Cv</a>
                     <a class="collapse-item" href="<?=base_url('admin/mesprojets');?>">Mes projets</a>
+                    <a class="collapse-item" href="<?=base_url('admin/mescandidatures');?>">Mes candidatures</a>
+                    <a class="collapse-item" href="<?=base_url('admin/addcandidature');?>">Ajouter une candidature</a>
                     <a class="collapse-item" href="<?=base_url('admin/ajout_entreprise');?>">Ajouter une entreprise</a>
                     <a class="collapse-item" href="<?=base_url('admin/ajout_serversmtp');?>">Ajouter un serveur smtp</a>
                 </div>
