@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Cv Developpeur Web</title>
-    <link href="<?= base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url("assets/css/style.css"); ?>">
+    <link rel="stylesheet" href="<?= site_url('assets/css/background.css?id=1'); ?>">
+    <link href="<?= site_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= site_url("assets/css/style.css"); ?>">
     <style>
         body {
 
@@ -96,7 +97,7 @@
             <?php if (!empty($pic)) {
                 foreach ($pic as $obj) {
                     if ($obj->emplacement == "profil") {
-                        $obj->content = str_replace('assets', base_url('https://lefebvreharold.fr/assets'), $obj->content); ?><?= $obj->content; ?>
+                     $obj->content = str_replace('assets', site_url('assets'), $obj->content); ?><?= $obj->content; ?>
 
                     <?php
 
@@ -106,7 +107,7 @@
         </div>
         <?php foreach ($row as $obj) {
             if ($obj->emplacement == "left") {
-                $obj->content = str_replace('assets', base_url('assets'), $obj->content);
+                $obj->content = str_replace('assets',site_url('assets'), $obj->content);
                 ?>
                 <h3><?= $obj->title; ?></h3>
                 <hr class="hrcv">
@@ -122,7 +123,7 @@
             <?php if (!empty($pic)) {
                 foreach ($pic as $obj) {
                     if ($obj->emplacement == "sociaux") {
-                        $obj->content = str_replace('assets', base_url('assets'), $obj->content); ?><?= $obj->content; ?>
+                        $obj->content = str_replace('assets', site_url('assets'), $obj->content); ?><?= $obj->content; ?>
 
                     <?php }
                 }
