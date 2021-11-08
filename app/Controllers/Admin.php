@@ -11,10 +11,6 @@ use Dompdf\Dompdf;
 
 class Admin extends Controller
 {
-    /**
-     * @brief index par défaut de l'administration
-     * @return view /template/admin/index.php
-     */
     public function index()
     {
         $userModel = model('App\Models\userModel');
@@ -31,11 +27,6 @@ class Admin extends Controller
         echo view('template/admin/index', $aView);
         echo view('template/admin/footer');
     }
-
-    /**
-     * @brief page de préparation de template de candidature
-     * @return view /template/admin/mescandidature.php
-     */
     public function mescandidatures()
     {
         $candidatureModel = model('App\Models\candidatureModel');
@@ -51,11 +42,6 @@ class Admin extends Controller
         echo view('template/admin/footer');
 
     }
-
-    /**
-     * @brief permet d'ajouter un bloc de template pour les candidatures
-     * @return view template/admin/addcandidature
-     */
     public function addcandidature()
     {
         $validation = Services::validation();
@@ -78,10 +64,6 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * @brief permet de éditer un bloc de template pour les candidatures
-     * @return view template/admin/editcandidature
-     */
     public function editcandidature()
     {
         $userModel = model('App\Models\userModel');
@@ -111,10 +93,6 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * @brief permet d'effacer un bloc de template pour les candidatures
-     * @return view template/admin/editcandidature
-     */
     public function deletecandidature()
     {
         $userModel = model('App\Models\userModel');
@@ -134,10 +112,6 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * @brief permet d'ajouter une entreprise pour le démarcharge
-     * @return view template/admin/addEntreprise
-     */
     public function ajout_entreprise()
     {
         $validation = Services::validation();
@@ -165,10 +139,7 @@ class Admin extends Controller
         echo view('template/admin/footer');
 
     }
-    /**
-     * @brief permet d'ajouter un serveur smtp pour l'envoi d'email
-     * @return view template/admin/ajout_serversmtp
-     */
+
     public function ajout_serversmtp()
     {
         $validation = Services::validation();
@@ -196,10 +167,6 @@ class Admin extends Controller
         echo view('template/admin/footer');
     }
 
-    /**
-     * @brief permet d'afficher mes projets visible sur l'accueil
-     * @return view template/admin/mesprojets
-     */
     public function mesprojets()
     {
         $projetsModel = model('App\Models\projetsModel');
@@ -216,10 +183,7 @@ class Admin extends Controller
         echo view('template/admin/footer');
 
     }
-    /**
-     * @brief permet d'ajouter un bloc de de projet visible sur l'accueil
-     * @return view template/admin/addprojet
-     */
+
     public function addprojet()
     {
         $userModel = model('App\Models\userModel');
@@ -250,10 +214,7 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * @brief permet d'éditer un bloc de de projet visible sur l'accueil
-     * @return view template/admin/editprojet
-     */
+
     public function editprojet()
     {
         $userModel = model('App\Models\userModel');
@@ -282,10 +243,7 @@ class Admin extends Controller
             return redirect()->to('admin/mesprojets');
         }
     }
-    /**
-     * @brief permet d'éffacer un bloc de de projet visible sur l'accueil
-     * @return view template/admin/confirmdelete
-     */
+
     public function deleteprojet()
     {
         $userModel = model('App\Models\userModel');
@@ -305,10 +263,6 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * @brief permet d'afficher mon cv visible sur l'accueil
-     * @return view template/admin/moncv
-     */
     public function moncv()
     {
         $homeModel = model('App\Models\homeModel');
@@ -324,43 +278,7 @@ class Admin extends Controller
         echo view('template/admin/footer');
 
     }
-    /**
-     * @brief permet d'ajouter mon cv visible sur l'accueil
-     * @return view template/admin/addcv
-     */
-    public function addcv()
-    {
-        $userModel = model('App\Models\userModel');
-        $addcvModel = model('App\Models\addcvModel');
-        $request = service('request');
-        $aView = $addcvModel->index();
-        $validation = Services::validation();
 
-        $aViewHeader['user'] = $userModel->getUser();
-        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
-            return redirect()->to('users/connexion');
-        }
-        $validation->setRule('title', 'title', 'required|max_length[52]', array("required" => "le champs titre est obligatoire.", "max_length" => "52 caractéres maximum pour le titre"));
-        $validation->setRule('content', 'title', 'required', array("required" => "le champs contenu est obligatoire."));
-        $data = $request->getPost();
-
-        if ($validation->run($data) != TRUE && $request->getPost()) {
-            $aView['error'] = '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>';
-
-        }
-        echo view('template/admin/header', $aViewHeader);
-        echo view('template/admin/sidebar');
-        echo view('template/admin/addcv', $aView);
-        echo view('template/admin/footer');
-        if (!empty($aView['error']) && $aView['error'] == true) {
-            return redirect()->to('admin/moncv');
-        }
-    }
-
-    /**
-     * @brief permet d'éditer mon cv visible sur l'accueil
-     * @return view template/admin/editcv
-     */
     public function editcv()
     {
         $userModel = model('App\Models\userModel');
@@ -390,10 +308,6 @@ class Admin extends Controller
         }
 
     }
-    /**
-     * @brief permet d'effacer mon cv visible sur l'accueil
-     * @return view template/admin/confirmdelete
-     */
     public function deletebloccv()
     {
         $userModel = model('App\Models\userModel');
@@ -412,43 +326,6 @@ class Admin extends Controller
             return redirect()->to('admin/moncv');
         }
     }
-
-    /**
-     * @brief permet d'ajouter mon bloc sociaux ou profil visible sur l'accueil
-     * @return view template/admin/addpicture
-     */
-    public function addpicture()
-    {
-        $userModel = model('App\Models\userModel');
-        $addcvModel = model('App\Models\addcvModel');
-        $request = service('request');
-        $aView = $addcvModel->picture();
-        $validation = Services::validation();
-
-        $aViewHeader['user'] = $userModel->getUser();
-        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
-            return redirect()->to('users/connexion');
-        }
-        $validation->setRule('content', 'content', 'required', array("required" => "le champs contenu est obligatoire."));
-        $data = $request->getPost();
-
-        if ($validation->run($data) != TRUE && $request->getPost()) {
-            $aView['error'] = '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>';
-
-        }
-        echo view('template/admin/header', $aViewHeader);
-        echo view('template/admin/sidebar');
-        echo view('template/admin/addpicture', $aView);
-        echo view('template/admin/footer');
-        if (!empty($aView['error']) && $aView['error'] == true) {
-            return redirect()->to('admin/moncv');
-        }
-    }
-
-    /**
-     * @brief permet d'éditer mon bloc sociaux ou profil visible sur l'accueil
-     * @return view template/admin/editpicture
-     */
     public function editpicture()
     {
         $userModel = model('App\Models\userModel');
@@ -478,11 +355,6 @@ class Admin extends Controller
         }
 
     }
-
-    /**
-     * @brief permet d'éffacer mon bloc sociaux ou profil visible sur l'accueil
-     * @return view template/admin/confirmdelete
-     */
     public function deleteblocpicture()
     {
         $userModel = model('App\Models\userModel');
@@ -501,5 +373,60 @@ class Admin extends Controller
             return redirect()->to('admin/moncv');
         }
     }
+    public function addcv()
+    {
+        $userModel = model('App\Models\userModel');
+        $addcvModel = model('App\Models\addcvModel');
+        $request = service('request');
+        $aView = $addcvModel->index();
+        $validation = Services::validation();
 
+        $aViewHeader['user'] = $userModel->getUser();
+        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
+            return redirect()->to('users/connexion');
+        }
+        $validation->setRule('title', 'title', 'required|max_length[52]', array("required" => "le champs titre est obligatoire.", "max_length" => "52 caractéres maximum pour le titre"));
+        $validation->setRule('content', 'title', 'required', array("required" => "le champs contenu est obligatoire."));
+        $data = $request->getPost();
+
+        if ($validation->run($data) != TRUE && $request->getPost()) {
+            $aView['error'] = '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>';
+
+        }
+        echo view('template/admin/header', $aViewHeader);
+        echo view('template/admin/sidebar');
+        echo view('template/admin/addcv', $aView);
+        echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
+    }
+
+    public function addpicture()
+    {
+        $userModel = model('App\Models\userModel');
+        $addcvModel = model('App\Models\addcvModel');
+        $request = service('request');
+        $aView = $addcvModel->picture();
+        $validation = Services::validation();
+
+        $aViewHeader['user'] = $userModel->getUser();
+        if (empty($aViewHeader['user']) or $aViewHeader['user']['role'] != 1) {
+            return redirect()->to('users/connexion');
+        }
+        $validation->setRule('content', 'content', 'required', array("required" => "le champs contenu est obligatoire."));
+        $data = $request->getPost();
+
+        if ($validation->run($data) != TRUE && $request->getPost()) {
+            $aView['error'] = '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>';
+
+        }
+        echo view('template/admin/header', $aViewHeader);
+        echo view('template/admin/sidebar');
+        echo view('template/admin/addpicture', $aView);
+        echo view('template/admin/footer');
+        if (!empty($aView['error']) && $aView['error'] == true) {
+            return redirect()->to('admin/moncv');
+        }
+    }
 }

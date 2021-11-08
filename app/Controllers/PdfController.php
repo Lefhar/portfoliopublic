@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use CodeIgniter\Controller;
 use Dompdf\Css\Stylesheet;
 use Dompdf\Dompdf;
@@ -14,29 +12,18 @@ class PdfController extends Controller
     {
         $homeModel = model('App\Models\homeModel');
         $aView = $homeModel->monCv();
-        return view('pdf_view', $aView);
-    }
 
+        return view('pdf_view',$aView);
+    }
 //     http://portfolio.fr/pdfController/htmlToPDF
-    public function htmlToPDF()
-    {
+    public   function htmlToPDF(){
         $response = service('response');
         $homeModel = model('App\Models\homeModel');
         $aView = $homeModel->monCv();
         $response->setStatusCode(Response::HTTP_OK);
         //$response->setBody($output);
         $response->setHeader('Content-type', 'application/pdf');
-        // $response->noCache();
-
-        if (!empty($aView['daterow']->date) && !empty($aView['datepic']->date) && $aView['daterow']->date > $aView['datepic']->date) {
-            $datedb = $aView['daterow']->date;
-        } else {
-            $datedb = $aView['datepic']->date;
-        }
-
-        $date = new \DateTime($datedb);
-        $date->getTimestamp();
-        if ($date->getTimestamp() > filemtime('assets/file/cv-developpeurweb.pdf')) {
+       // $response->noCache();
         $dompdf = new Dompdf();
 
         $options = $dompdf->getOptions();
@@ -44,37 +31,29 @@ class PdfController extends Controller
         $dompdf->setOptions($options);
 
         $dompdf->setPaper('A4', 'portrait');
-        $dompdf->loadHtml(view('pdf_view', $aView));
+        $dompdf->loadHtml(view('pdf_view',$aView));
 
-        //  $dompdf->setCss(new \Dompdf\Css\Stylesheet('../public/assets/css/bootstrap.css'));
+      //  $dompdf->setCss(new \Dompdf\Css\Stylesheet('../public/assets/css/bootstrap.css'));
         $dompdf->setCss(new Stylesheet($dompdf));
-        // $dompdf->setDom(new DOMDocument());
-        $context = stream_context_create([
-            'ssl' => [
-                'verify_peer' => FALSE,
-                'verify_peer_name' => FALSE
-            ]
-        ]);
-        $dompdf->setHttpContext($context);
+       // $dompdf->setDom(new DOMDocument());
+       $context = stream_context_create([
+        'ssl' => [
+            'verify_peer' => FALSE,
+            'verify_peer_name' => FALSE
+        ]
+    ]);
+    $dompdf->setHttpContext($context);
         $dompdf->render();
-        $dompdf->stream("cv-developpeur-web.pdf", array("Attachment" => 0));
-        } else {
-            header("Content-type:application/pdf");
-            header("Content-Disposition:attachment;filename='downloaded.pdf'");
-            readfile("assets/file/cv-developpeurweb.pdf");
-        }
+        $dompdf->stream("cv-developpeur-web.pdf", array("Attachment"=>0));
     }
-
     public function download()
     {
         $homeModel = model('App\Models\homeModel');
         $aView = $homeModel->monCv();
-        $daterow = end($aView['row']);
-        $datepic = end($aView['pic']);
-        if (!empty($daterow) && !empty($datepic) && $daterow->date > $datepic->date) {
-            $datedb = $daterow->date;
+        if (!empty($aView['daterow']->date) && !empty($aView['datepic']->date) && $aView['daterow']->date > $aView['datepic']->date) {
+            $datedb = $aView['daterow']->date;
         } else {
-            $datedb = $datepic->date;
+            $datedb = $aView['datepic']->date;
         }
 
         $date = new \DateTime($datedb);
@@ -108,9 +87,7 @@ class PdfController extends Controller
             exit();
         }
     }
-
-    public function htmlToPDFsave()
-    {
+    public function htmlToPDFsave(){
         $homeModel = model('App\Models\homeModel');
         $aView = $homeModel->monCv();
         $dompdf = new Dompdf();
@@ -119,7 +96,7 @@ class PdfController extends Controller
         $dompdf->setOptions($options);
 
         $dompdf->setPaper('A4', 'portrait');
-        $dompdf->loadHtml(view('pdf_view', $aView));
+        $dompdf->loadHtml(view('pdf_view',$aView));
 
         $dompdf->setCss(new Stylesheet($dompdf));
         $context = stream_context_create([
@@ -131,7 +108,6 @@ class PdfController extends Controller
         $dompdf->setHttpContext($context);
         $dompdf->render();
         $output = $dompdf->output();
-
         file_put_contents('assets/file/cv-developpeurweb.pdf', $output);
     }
 

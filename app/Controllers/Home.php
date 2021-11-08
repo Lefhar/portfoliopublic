@@ -8,7 +8,8 @@ class Home extends BaseController
 	{
         $homeModel = model('App\Models\homeModel');
         $aView = $homeModel->index();
-        echo view('template/header');
+
+        echo view('template/header', $aView);
 		echo view('template/index',$aView);
         echo view('template/footer');
 	}

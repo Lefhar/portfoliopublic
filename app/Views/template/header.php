@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Developpeur web et web mobile</title>
-    <meta name="description" content="Passionné d’informatique depuis 2005, j’aime relever des défis techniques et résoudre les problèmes les plus complexes. J’ai commencé en autodidacte, principalement en procédural, et depuis 2 ans en POO. J’ai des compétences élevées en HTML, Javascript, PHP (procédural, PDO, POO) et MySQL. Je connais l’environnement serveur debian, ubuntu, centos. Je sais travailler sous Ubuntu, Debian, CentOS. Afin de professionnaliser toutes mes compétences, j'ai suivi une formation à l’AFPA du 19 Octobre 2020 au 9 Juillet 2021" />
+    <meta name="description" content="<?php echo !empty($head) ? strip_tags($head->content):"";?>" />
     <meta property="fb:app_id" content="966242223397117" />
     <meta property="og:site_name" content="Lefebvre Harold" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:type" content="profile" />
     <meta property="og:title" content="Developpeur web et web mobile" />
     <meta property="og:url" content="<?=site_url();?>" />
-    <meta property="og:description" content="Passionné d’informatique depuis 2005, j’aime relever des défis techniques et résoudre les problèmes les plus complexes. J’ai commencé en autodidacte, principalement en procédural, et depuis 2 ans en POO. J’ai des compétences élevées en HTML, Javascript, PHP (procédural, PDO, POO) et MySQL. Je connais l’environnement serveur debian, ubuntu, centos. Je sais travailler sous Ubuntu, Debian, CentOS. Je sais travailler sous Ubuntu, Debian, CentOS. Afin de professionnaliser toutes mes compétences, j'ai suivi une formation à l’AFPA du 19 Octobre 2020 au 9 Juillet 2021." />
+    <meta property="og:description" content="<?php echo !empty($head) ? strip_tags($head->content):"";?>" />
     <meta property="og:image" content="<?=site_url('assets/img/ms-icon-310x310.png');?>" />
+    <link rel="stylesheet" href="<?=base_url('assets/css/background.css?id=4');?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="<?=site_url('assets/css/style.css?id=44');?>">
+    <link rel="stylesheet" href="<?=base_url('assets/css/style.css?id=47');?>">
     <link rel="apple-touch-icon" sizes="57x57" href="<?=site_url('assets/img/apple-icon-57x57.png');?>"/>
     <link rel="apple-touch-icon" sizes="60x60" href="<?=site_url('assets/img/apple-icon-60x60.png');?>"/>
     <link rel="apple-touch-icon" sizes="72x72" href="<?=site_url('assets/img/apple-icon-72x72.png');?>"/>
@@ -57,9 +58,7 @@
                         <a class="nav-link"  href="#contact">Contact</a>
                     </li>
                 </ul>
-                <!--
-                    barre de recherche dans la nav bar
-                -->
+
             </div>
         </div>
     </nav>

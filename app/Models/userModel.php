@@ -117,7 +117,7 @@ class userModel extends Model
             $builder->update();
             $session->set(array('login' => $email, 'jeton' => $data["jeton"]));
             if(!empty($request->getPost('remember'))&&$request->getPost('remember')=="on"){
-            setcookie('Lh_admin', $aView['users']->email . ':' . $data["jeton"], time()+3600*24, '/', '', false, false);
+            setcookie('Lh_admin', $aView['users']->email . ':' . $data["jeton"], time()+3600*168, '/', '', false, false);
             }
             $aView['valide'] = true;
         } elseif (!empty($aView["users"]->mail_hash)) {

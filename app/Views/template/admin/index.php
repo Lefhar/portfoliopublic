@@ -49,8 +49,11 @@
                      <?php
                      foreach ($row as $obj ){
                          //var_dump($obj);
-                            if($obj['status']==0){$status = "non envoyé";}else{$status = "envoyé";}
-                            if($obj['status']==1&&$obj['etat']=="attente"){
+                         if($obj['statut2']==0){$status = "non envoyé";}elseif($obj['statut2']==2){$status = '<i class="fas fa-exclamation-triangle text-danger"></i> Erreur';
+                        }else{
+                            $status = '<i class="fas fa-check text-success"></i> envoyé';
+                        }
+                            if($obj['statut2']==1&&$obj['etat']=="attente"){
                                 $resend = '<a href="#" onclick="actionup(\''.stripslashes($obj['id']).'\');"><li class="fas fa-refresh"></li></a>';
                             }else{$resend="";}
                             ?>

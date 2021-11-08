@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 haut">
                 <div class="console" id="console">
-                    <div class="title"><img src="assets/img/PuTTY_icon_128px.png" width="18"> PuTTY
+                    <div class="title"><img src="<?=site_url('assets/img/PuTTY_icon_128px.png');?>" width="18"> PuTTY
                         <div class="button">
                             <span class="fa fa-window-minimize minimize" id="minimize"></span>
                             <span class="fa fa-window-maximize maximize" id="maximize"></span>
@@ -43,20 +43,20 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h5 class="card-title"><a href="<?=$obj->lien_web;?>" target="blank"><?=$obj->title;?> </a></h5>
+                                    <h5 class="card-title"><a href="<?=$obj->lien_web;?>" target="_blank"><?=$obj->title;?> </a></h5>
                                     <p class="card-text">
                                         <?=$obj->contenu;?>
                                     </p>
                                     <p class="card-text text-center">
                                         <?php if(!empty($obj->lien_github)){?>
-                                            <a href="<?=$obj->lien_github;?>" target="blank"><img
-                                                        class="img-fluid" src="assets/img/github-img.png" width="35"
+                                            <a href="<?=$obj->lien_github;?>" target="_blank"><img
+                                                        class="img-fluid" src="<?=site_url('assets/img/github-img.png');?>" width="35"
                                                         alt="<?=$obj->title;?>"></a>
                                         <?php }?>
                                         <?php if(!empty($obj->lien_web)){?>
-                                            <a href="<?=$obj->lien_web;?>" target="blank"><img
-                                                        class="img-fluid" src="assets/img/world-wide-web.png"
-                                                        width="30" alt="<?=$obj->title;?>"></a>
+                                            <a href="<?=$obj->lien_web;?>" target="_blank"><img
+                                                        class="img-fluid" src="<?=site_url('assets/img/world-wide-web.png');?>"
+                                                        width="30" alt="<?=$obj->title;?>"></a> 
                                         <?php }?>
 
 
@@ -103,7 +103,7 @@
 
                     </div>
                     <div class="col-lg-8 padancre">
-                        <a href="<?=base_url('pdfController/download');?>" target="_blank" class="btn btn-primary downloadcv" ><i class="fas fa-file-pdf text-danger"></i> Télécharger le CV</a>
+                        <a href="<?=site_url('pdfController/download');?>" target="_blank" class="btn btn-primary downloadcv" ><i class="fas fa-file-pdf text-danger"></i> Télécharger le CV</a>
                 <span class="sociaux">
 
                      <?php if (!empty($pic)) {

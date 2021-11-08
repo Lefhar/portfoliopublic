@@ -10,10 +10,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 class Sendmail extends BaseController
 {
 
-    /**
-     * @brief index de la page sendmail qui réceptionne les requêtes post
-     * pour l'envoi d'email ou demande de CV renvoi un code html afficher avec ajax
-     */
+
     public function index()
     {
 //        $viewModel = new SendEmail();
